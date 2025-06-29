@@ -1,0 +1,40 @@
+// @use "/src/styles/context" as context;
+$font-family-default: 'Roboto', sans-serif;
+
+:root {
+  // Dimensions:
+//   --txt-sm: #{context.$font-size-sm};
+//   --txt-md: #{context.$font-size-md};
+//   --txt-lg: #{context.$font-size-lg};
+//   --txt-xl: #{context.$font-size-xl};
+  // Colors - General:
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dark: #444;
+  --color-success: #27c942;
+  --color-info: #0070ac;
+  --color-warning: #e4ab00;
+  --color-danger: #ff0000;
+  --color-success-bg: #dcfae3;
+  --color-danger-bg: #fbe7e9;
+  // Colors - Application Custom:
+  --color-primary: #3f51b5;
+  --color-accent: #b40071;
+  --color-accent-light: #e2a3cb;
+  --color-magenta: #cd007a;
+  --color-ocean-blue: #0070ac;
+  --color-ocean-blue-light: #a2d1ea;
+  --color-ocean-blue-light-2: #d6e8f1;
+  --color-light-blue-grey: #daebf2;
+  --color-secondary: #777;
+  --color-text: #222;
+  --color-text-title: #444;
+  --color-separator: #e0e0e0;
+  --color-bg-readonly: #fafafa;
+  --color-primary: #004c94;
+  --color-accent: #ec008c;
+  --color-accent-darken: #d1007d;
+}
+body{
+    font-family: $font-family-default; 
+}

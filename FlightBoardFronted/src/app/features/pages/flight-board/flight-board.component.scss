@@ -1,0 +1,183 @@
+.flight-board {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    input {
+      padding: 0.5rem;
+      flex: 1 1 180px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:disabled {
+        background-color: #999;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .flight-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 1rem;
+      text-align: left;
+    }
+
+    button {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .status-boarding {
+      color: orange;
+      transition: background-color 0.5s ease;
+    }
+
+    .status-delayed {
+      color: red;
+      transition: background-color 0.5s ease;
+    }
+
+    .status-departed {
+      color: gray;
+      transition: background-color 0.5s ease;
+    }
+
+    .updated {
+      animation: glow 1.5s ease-in-out;
+    }
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px 2px #4caf50;
+    background-color: #e8f5e9;
+  }
+
+  100% {
+    box-shadow: none;
+    background-color: inherit;
+  }
+}
+
+
+.flight-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 1rem;
+    text-align: left;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .status-scheduled {
+    color: #2e7d32; 
+    background-color: #e8f5e9;
+  }
+
+  .status-boarding {
+    color: #ef6c00; 
+    background-color: #fff3e0;
+  }
+
+  .status-departed {
+    color: #757575;
+    background-color: #f5f5f5;
+  }
+
+  .status-delayed {
+    color: #d32f2f; 
+    background-color: #ffebee;
+  }
+
+  .status-landed {
+    color: #1565c0; 
+    background-color: #e3f2fd;
+  }
+
+  tr.mat-row {
+    &.ng-animating {
+      animation: fadeSlideIn 0.3s ease-out;
+    }
+  }
+
+
+  .justAdded {
+    animation: glowGreen 3s ease-in-out;
+  }
+
+  .justUpdated {
+    animation: glowBlue 3s ease-in-out;
+  }
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowGreen {
+  0% {
+    box-shadow: 0 0 10px 3px #4caf50;
+    background-color: #e8f5e9;
+  }
+
+  100% {
+    box-shadow: none;
+    background-color: inherit;
+  }
+}
+
+@keyframes glowBlue {
+  0% {
+    box-shadow: 0 0 10px 3px #2196f3;
+    background-color: #e3f2fd;
+  }
+
+  100% {
+    box-shadow: none;
+    background-color: inherit;
+  }
+}

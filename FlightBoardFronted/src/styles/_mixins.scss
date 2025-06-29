@@ -1,0 +1,27 @@
+@use 'variables' as *;
+
+@mixin break-above-xs() {
+    @media screen and (min-width: $max-width-screen-xs) {
+        @content;
+    }
+}
+
+@mixin break-above-sm() {
+    @media screen and (min-width: $max-width-screen-sm) {
+        @content;
+    }
+}
+
+@mixin break-above-md() {
+    @media screen and (min-width: $max-width-screen-md) {
+        @content;
+    }
+}
+
+@mixin break-above-lg() {
+    @media screen and (min-width: $max-width-screen-lg) {
+        @content;
+    }
+}
+
+/* #endregion */

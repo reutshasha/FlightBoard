@@ -1,0 +1,81 @@
+<div class="flight-board">
+    <h2>Real-Time Flight Board</h2>
+
+    <form [formGroup]="flightForm" (ngSubmit)="onAddFlight()" class="flight-form">
+        <input formControlName="flightNumber" placeholder="Flight #" />
+        <input formControlName="destination" placeholder="Destination" />
+        <input type="date" formControlName="departureTime" placeholder="Departure Time" />
+        <input formControlName="gate" placeholder="Gate" />
+        <button type="submit" [disabled]="flightForm.invalid">Add Flight</button>
+    </form>
+    <form [formGroup]="filterForm" (ngSubmit)="applyClientFilters()" class="filter-form">
+        <label>Status:</label>
+        <select formControlName="status">
+            <option value="">Choose Status</option>
+            <option value="Scheduled">Scheduled</option>
+            <option value="Boarding">Boarding</option>
+            <option value="Departed">Departed</option>
+            <option value="Delayed">Delayed</option>
+            <option value="Landed">Landed</option>
+        </select>
+
+        <input formControlName="destination" placeholder="Destination" />
+        <button type="submit">Search</button>
+        <button type="button" (click)="clearFilters()">Clear</button>
+    </form>
+
+    <table mat-table [dataSource]="dataSource" class="flight-table mat-elevation-z2">
+
+        <ng-container matColumnDef="flightNumber">
+            <th mat-header-cell *matHeaderCellDef>Flight #</th>
+            <td mat-cell *matCellDef="let flight" [@rowFade] [class.justAdded]="flight.justAdded"
+                [class.justUpdated]="flight.justUpdated">
+                {{ flight.flightNumber }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="destination">
+            <th mat-header-cell *matHeaderCellDef>Destination</th>
+            <td mat-cell *matCellDef="let flight" [@rowFade] [class.justAdded]="flight.justAdded"
+                [class.justUpdated]="flight.justUpdated">
+                {{ flight.destination }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="departureTime">
+            <th mat-header-cell *matHeaderCellDef>Departure</th>
+            <td mat-cell *matCellDef="let flight" [@rowFade] [class.justAdded]="flight.justAdded"
+                [class.justUpdated]="flight.justUpdated">
+                {{ flight.departureTime | date:'dd-MM-yyyy HH:mm' }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="gate">
+            <th mat-header-cell *matHeaderCellDef>Gate</th>
+            <td mat-cell *matCellDef="let flight" [@rowFade] [class.justAdded]="flight.justAdded"
+                [class.justUpdated]="flight.justUpdated">
+                {{ flight.gate }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let flight" [@rowFade] [ngClass]="'status-' + flight.status.toLowerCase()"
+                [class.justAdded]="flight.justAdded" [class.justUpdated]="flight.justUpdated">
+                {{ flight.status }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+            <td mat-cell *matCellDef="let flight">
+                <button (click)="deleteFlight(flight.id)">🗑</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="10"></mat-paginator>
+</div>
